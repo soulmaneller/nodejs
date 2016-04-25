@@ -1,7 +1,8 @@
 FROM ubuntu
 MAINTAINER Oxoox Soulmaneller <oxoox22@gmail.com>
 
-WORKDIR /root
+ENV ROOT_DIR /root
+WORKDIR ${ROOT_DIR}
 
 RUN /bin/bash -c 'apt-get install curl git -y \
     && git clone https://github.com/creationix/nvm.git \
@@ -10,5 +11,8 @@ RUN /bin/bash -c 'apt-get install curl git -y \
     && source /root/.nvm/nvm.sh \
     && nvm install v4 \
     && nvm alias default 4'
+    
+RUN echo "{ \"allow_root\": true, \"interactive\": false }" >> ${ROOT_DIR}/.bowerrc
+RUN echo "export NODE_PATH=$NODE_PATH:./lib:./" >> /root/.bashrc 
 
 CMD [ "/bin/bash" ]
