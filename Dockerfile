@@ -9,8 +9,8 @@ RUN /bin/bash -c 'apt-get install curl git -y \
     && source /root/nvm/install.sh \
     && rm -rf /root/nvm \
     && source /root/.nvm/nvm.sh \
-    && nvm install v4 \
-    && nvm alias default 4'
+    && nvm install v6 \
+    && nvm alias default 6'
     
 RUN echo "{ \"allow_root\": true, \"interactive\": false }" >> ${ROOT_DIR}/.bowerrc
 RUN echo "export NODE_PATH=$NODE_PATH:./lib:./" >> /root/.bashrc 
